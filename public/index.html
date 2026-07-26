@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghyma CI/CD Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card">
+    <h1>Ghyma CI/CD Demo</h1>
+    <p class="subtitle">تطبيق تجريبي لتطبيق الـ CI/CD Pipeline عليه</p>
+
+    <div class="badge" id="envBadge">جاري التحميل...</div>
+
+    <div class="links">
+      <a href="/health" target="_blank">/health</a>
+      <a href="/version" target="_blank">/version</a>
+    </div>
+  </div>
+
+  <script>
+    fetch('/version')
+      .then(res => res.json())
+      .then(data => {
+        const badge = document.getElementById('envBadge');
+        badge.textContent = 'البيئة الحالية: ' + data.env;
+        badge.classList.add(data.env === 'production' ? 'prod' : 'staging');
+      })
+      .catch(() => {
+        document.getElementById('envBadge').textContent = 'تعذّر جلب بيانات البيئة';
+      });
+  </script>
+
+</body>
+</html>

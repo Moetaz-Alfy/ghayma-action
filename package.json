@@ -1,0 +1,12 @@
+{
+  "name": "ghyma-cicd-demo",
+  "version": "1.0.0",
+  "description": "Small demo app for practicing the Ghaymah CI/CD pipeline",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
